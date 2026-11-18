@@ -791,6 +791,9 @@ export { SYRIAN_GEOMETRY_UNITS };
 // لإضافة أي كتاب جديد للصف الثامن مستقبلاً: أضف عنصراً واحداً هنا مع وحداته ومجلد صفحاته المصورة،
 // وسيرث تلقائياً الفهرس الرئيسي، شريط التنقل، قارئ كتاب الوزارة المكبّر والمصوّر، السبورة، والعمل أوفلاين.
 // ============================================================================
+const ASSET_BASE =
+  ((typeof import.meta !== 'undefined' && (import.meta as unknown as { env?: { BASE_URL?: string } }).env?.BASE_URL) || '/').replace(/\/$/, '');
+
 export const BOOKS_CATALOG: BookConfig[] = [
   {
     id: 'algebra',
@@ -801,8 +804,8 @@ export const BOOKS_CATALOG: BookConfig[] = [
     termSummary: 'الفصلان الأول والثاني',
     description:
       'الأعداد العادية والعمليات عليها، قوى الأعداد العادية والجذور، الحساب بالرموز، معادلات الدرجة الأولى، النسبة والتناسب، وتنظيم المعطيات والإحصاء.',
-    coverImage: '/textbook_pages/page_001.jpg',
-    scanBaseDir: '/textbook_pages',
+    coverImage: `${ASSET_BASE}/textbook_pages/page_001.jpg`,
+    scanBaseDir: `${ASSET_BASE}/textbook_pages`,
     totalPages: 124,
     lessonIdPrefix: 'u',
     defaultLessonId: 'u1-l1',
@@ -819,8 +822,8 @@ export const BOOKS_CATALOG: BookConfig[] = [
     termSummary: 'الفصلان الأول والثاني',
     description:
       'متوازيات الأضلاع والانسحاب وتطابق المثلثات، منتصفات الأضلاع وتساوي ثلاث نسب، المستقيمات المميزة، المثلث القائم وفيثاغورث والدائرة، والهرم والمخروط الدوراني.',
-    coverImage: '/geometry_pages/page_001.jpg',
-    scanBaseDir: '/geometry_pages',
+    coverImage: `${ASSET_BASE}/geometry_pages/page_001.jpg`,
+    scanBaseDir: `${ASSET_BASE}/geometry_pages`,
     totalPages: 116,
     lessonIdPrefix: 'g-',
     defaultLessonId: 'g-u1-l1',
