@@ -1,0 +1,6 @@
+{
+  "name": "الرياضيات - الصف الثامن (المنهاج السوري)",
+  "description": "تطبيق تفاعلي لشرح الدرس الأول (جمع وطرح الأعداد العادية) لمنهاج الرياضيات السوري للصف الثامن مع سبورة ذكية وشرح صوتي وكود فلاتر متكامل أوفلاين.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

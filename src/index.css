@@ -1,0 +1,290 @@
+@import "tailwindcss";
+
+@keyframes mathGlowPulse {
+  0%, 100% {
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 8px rgba(250, 204, 21, 0.85));
+  }
+  50% {
+    transform: scale(1.16);
+    filter: drop-shadow(0 0 16px rgba(250, 204, 21, 1));
+  }
+}
+
+.animate-math-glow {
+  display: inline-block;
+  animation: mathGlowPulse 1.8s ease-in-out infinite;
+}
+
+/* ========================================================================== */
+/* هذا الأمر يطبق التنسيقات فقط على الشاشات التي يقل عرضها عن 480 بكسل (الموبايل) */
+/* ========================================================================== */
+@media screen and (max-width: 480px) {
+    
+    /* 1. استغلال كامل مساحة الشاشة وتقليل الهوامش الجانبية */
+    body {
+        padding: 0;
+        margin: 0;
+        background-color: #0d1b2a; /* لون الخلفية الداكن المماثل لتطبيقك */
+    }
+
+    #root {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* 2. إخفاء الأزرار غير الضرورية للطالب في الأعلى لتوفير مساحة (مثل أزرار المطور/الأكواد) */
+    .developer-bar, .code-icon, .info-icon {
+        display: none !important;
+    }
+
+    /* 3. جعل شريط التنقل العلوي (منهاج الرياضيات السوري) مدمجاً وأصغر حجماً */
+    .navbar {
+        padding: 8px !important;
+        font-size: 14px !important; /* تصغير الخط ليناسب السطر الواحد */
+    }
+
+    .navbar .brand-title {
+        font-size: 14px !important;
+        white-space: nowrap !important;
+    }
+
+    /* 4. تنسيق بطاقة الدرس البيضاء لتبدو واضحة وبسيطة دون فراغات زائدة */
+    .lesson-card {
+        width: 100% !important;
+        padding: 12px !important;
+        margin-top: 10px !important;
+        border-radius: 8px !important;
+        box-sizing: border-box !important;
+    }
+
+    .lesson-card.scanned-fullbleed {
+        padding: 0 !important;
+        margin-top: 0 !important;
+        border-radius: 0 !important;
+        border: 0 !important;
+    }
+
+    /* 5. ضبط حجم النصوص الرياضية والكسور لتظهر كاملة وواضحة دون قص */
+    .math-content {
+        line-height: 1.75 !important;
+        max-width: 100% !important;
+        word-break: break-word !important;
+    }
+
+    /* تقليل الهوامش الخارجية لحاوية الكتاب على الشاشات الصغيرة */
+    .book-outer-binder {
+        padding: 2px !important;
+        border-width: 1px !important;
+        border-radius: 10px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .book-outer-binder.scanned-fullbleed {
+        padding: 0 !important;
+        border-width: 0 !important;
+        border-radius: 0 !important;
+    }
+}
+
+.book-outer-binder.scanned-fullbleed {
+  padding: 0 !important;
+  border-width: 0 !important;
+  border-radius: 0 !important;
+}
+
+.lesson-card.scanned-fullbleed {
+  padding: 0 !important;
+  border-radius: 0 !important;
+  border: 0 !important;
+}
+
+/* خطوط الكتاب المدرسي الواضحة والقابلة للتكبير مع التمرير العمودي للأسفل فقط */
+.font-book-noto {
+  font-family: 'Noto Naskh Arabic', 'Amiri', serif;
+}
+.font-book-readex {
+  font-family: 'Readex Pro', 'Tajawal', sans-serif;
+}
+.font-book-plex {
+  font-family: 'IBM Plex Sans Arabic', 'Tajawal', sans-serif;
+}
+.font-book-amiri {
+  font-family: 'Amiri', 'Noto Naskh Arabic', serif;
+}
+
+/* تطبيق حجم الخط المخصص على فقرات الكتاب بوضوح تام دون أي تمرير أفقي */
+.book-readable-content {
+  overflow-x: hidden;
+  overflow-wrap: anywhere;
+}
+.book-readable-content p,
+.book-readable-content .book-body-text {
+  font-size: var(--book-font-size, 24px);
+  line-height: 2.05;
+}
+.book-readable-content h3,
+.book-readable-content .book-sec-title {
+  font-size: calc(var(--book-font-size, 24px) * 1.14);
+  line-height: 1.7;
+}
+
+/* ========================================================================== */
+/* حركات الفيديو الأنيميشن لشرح الدروس والرسومات الهندسية                      */
+/* ========================================================================== */
+@keyframes videoSceneEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) scale(0.975);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes videoPopStep {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.96);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.01);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes videoSvgDraw {
+  0% {
+    stroke-dashoffset: 650;
+    opacity: 0.2;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes videoShapeFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes videoWaveBar {
+  0%, 100% {
+    transform: scaleY(0.35);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes videoGridDrift {
+  0% {
+    background-position: 0px 0px;
+  }
+  100% {
+    background-position: 48px 48px;
+  }
+}
+
+.video-scene-enter {
+  animation: videoSceneEnter 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.video-pop-step {
+  animation: videoPopStep 0.48s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.video-diagram-animate svg path,
+.video-diagram-animate svg line,
+.video-diagram-animate svg polygon,
+.video-diagram-animate svg circle,
+.video-diagram-animate svg rect,
+.video-diagram-animate svg ellipse {
+  stroke-dasharray: 650;
+  stroke-dashoffset: 0;
+  animation: videoSvgDraw 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.video-diagram-float {
+  animation: videoShapeFloat 3.6s ease-in-out infinite;
+}
+
+.video-wave-bar {
+  transform-origin: bottom;
+  animation: videoWaveBar 0.75s ease-in-out infinite;
+}
+
+.video-studio-grid {
+  background-image:
+    linear-gradient(to right, rgba(45, 212, 191, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(45, 212, 191, 0.07) 1px, transparent 1px);
+  background-size: 48px 48px;
+  animation: videoGridDrift 12s linear infinite;
+}
+
+@keyframes chalkTokenWrite {
+  0% {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.55) rotate(-3deg);
+    filter: drop-shadow(0 0 14px rgba(253, 224, 71, 0.95));
+  }
+  65% {
+    opacity: 1;
+    transform: translateY(2px) scale(1.14) rotate(0deg);
+    filter: drop-shadow(0 0 18px rgba(253, 224, 71, 0.95));
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: drop-shadow(0 0 0px rgba(253, 224, 71, 0));
+  }
+}
+
+@keyframes chalkOperatorSlide {
+  0% {
+    opacity: 0;
+    transform: scale(0.4) translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes chalkCursorBlink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0.15;
+  }
+}
+
+.animate-chalk-write {
+  animation: chalkTokenWrite 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-chalk-op {
+  animation: chalkOperatorSlide 0.38s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-chalk-cursor {
+  animation: chalkCursorBlink 0.8s steps(2, start) infinite;
+}
+
+
+
+
